@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<robot name="Air_Craft">
+
+  <link name="base_link">
+  </link>
+
+  <link name="roll">
+  </link>
+
+  <link name="pitch">
+  </link>
+
+  <link name="yaw">
+  </link>
+
+  <link name="nose">
+    <visual>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.5 0 0.0"/>
+      <material name="rollc">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="wing">
+    <visual>
+      <geometry>
+        <box size="0.15 1.5 0.02"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.0"/>
+      <material name="wingc">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="fuselage">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="1"/>
+      </geometry>
+      <origin rpy="0 1.57 0" xyz="0 0 0"/>
+      <material name="abodyc">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="tail">
+    <visual>
+      <geometry>
+        <box size="0.1 0.025 0.28"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz=" -0.45 0.0 0.07"/>
+      <material name="tailc">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="fins">
+    <visual>
+      <geometry>
+        <box size="0.1 0.5 0.02"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz=" -0.45 0.0 0.05"/>
+      <material name="tailf">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+ <joint name="pitch_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="pitch"/>
+    <axis xyz="0 1 0" />
+    <origin rpy="0 0 0" xyz="0 0 0.0"/>
+  </joint>
+
+  <joint name="roll_joint" type="continuous">
+    <parent link="pitch"/>
+    <child link="roll"/>
+    <axis xyz="1 0 0" />
+    <origin rpy="0 0 0" xyz="0 0 0.0"/>
+  </joint>
+
+  <joint name="yaw_joint" type="continuous">
+    <parent link="roll"/>
+    <child link="yaw"/>
+    <axis xyz="0 0 1" />
+    <origin rpy="0 0 0" xyz="0 0 0.0"/>
+  </joint>
+
+  <joint name="nothing_0" type="fixed">
+    <parent link="yaw"/>
+    <child link="nose"/>
+    <origin rpy="0 0 0" xyz="0 0 0.0"/>
+  </joint>
+
+  <joint name="nothing_1" type="fixed">
+    <parent link="nose"/>
+    <child link="wing"/>
+    <origin rpy="0 0 0" xyz="0 0 0.0"/>
+  </joint>
+
+  <joint name="nothing_2" type="fixed">
+    <parent link="wing"/>
+    <child link="fuselage"/>
+    <origin rpy="0 0 0" xyz="0 0 0.0"/>
+  </joint>
+
+  <joint name="nothing_3" type="fixed">
+    <parent link="fuselage"/>
+    <child link="tail"/>
+    <origin rpy="0 0 0" xyz="0 0 0.0"/>
+  </joint>
+
+  <joint name="nothing_4" type="fixed">
+    <parent link="tail"/>
+    <child link="fins"/>
+    <origin rpy="0 0 0" xyz="0 0 0.0"/>
+  </joint>
+
+</robot>
+
